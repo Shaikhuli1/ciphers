@@ -4,9 +4,10 @@ A collection of ciphers of the substitution type that will be modelled mathemati
 
 Currently, the list of ciphers to include (subject to change) are:
 
-  * Monoalphabetic
+  * Simple substitution (possibly some derivatives)
   * Caesar 
   * One-Time Pad
   * Playfair
   * Vigenere
   * Hill
+  * Four-Square
