@@ -11,3 +11,5 @@ Currently, the list of ciphers to include (subject to change) are:
   * Vigenere
   * Hill
   * Four-Square
+
+Both encryption and decryption methods should be with each cipher
