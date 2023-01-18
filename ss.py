@@ -1,6 +1,8 @@
 import random
 import string
 
+# Encryption
+
 alphabet = string.ascii_lowercase
 key = ''.join(random.sample(alphabet,len(alphabet)))
 plaintext = input('Enter the text you want encrypted: ')
@@ -14,5 +16,11 @@ for letter in plaintext:
 
 print(ciphertext)
 
+print(f'Your encryption key is {key}. Please keep it safe!')
+print(f'Your encrypted text: {ciphertext}')
 
+# Decryption
+
+dtext = input('Enter the text you want decrypted here: ')
+dkey = input('Enter your encryption key: ')
 
