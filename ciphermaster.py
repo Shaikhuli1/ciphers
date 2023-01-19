@@ -24,3 +24,4 @@ print(f'Your encrypted text: {ciphertext}')
 
 dtext = input('Enter the text you want decrypted here: ')
 dkey = input('Enter your encryption key: ')
+alphabet = string.ascii_lowercase
