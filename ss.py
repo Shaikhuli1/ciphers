@@ -27,6 +27,15 @@ while True:
         dtext = input('Enter the text you want decrypted here: ')
         dkey = input('Enter your encryption key: ')
         alphabet = string.ascii_lowercase
+        plaintext = ''
+        for letter in dtext:
+            if letter.lower() in dkey:
+                plaintext += alphabet[dkey.find(letter.lower())]
+            else:
+                plaintext += letter
+
+        print(f'Your decrypted text: {plaintext}')
+
     else:
         print('Please enter either 1 or 2.')
         continue
