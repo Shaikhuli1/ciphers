@@ -5,7 +5,7 @@ A collection of ciphers of the substitution type that will be modelled mathemati
 Currently, the list of ciphers to include and how they work (subject to change) are below:
 
   * [Simple substitution](http://practicalcryptography.com/ciphers/simple-substitution-cipher/)
-  * Caesar 
+  * [Caesar](https://en.wikipedia.org/wiki/Caesar_cipher) 
   * One-Time Pad
   * Playfair
   * Vigenere
