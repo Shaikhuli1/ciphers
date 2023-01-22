@@ -15,4 +15,18 @@ for char in ptext:
     else:
         ctext += char
 
-print(ctext)
+print(f'Your shift key is: {shift}. Keep it safe')
+print(f'Encrypted text: \n{ctext}')
+
+ctext = input('Enter your text: ')
+shift = input('Enter the shift you want to use: ')
+ptext = ''
+for char in ctext:
+    if char.isupper():
+        ptext += chr((ord(char) - shift - 65)% 26 + 65)
+    elif char.islower():
+        ptext += chr((ord(char) - shift - 97)% 26 + 97)
+    else:
+        ptext += char
+
+print(f'Encrypted text: \n{ptext}')
