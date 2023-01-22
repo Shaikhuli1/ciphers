@@ -6,3 +6,13 @@ shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to ge
 if shift == 'RANDOM':
     shift = random.randint(1,25)
 
+ctext = ''
+for char in ptext:
+    if char.isupper():
+        ctext += chr((ord(char) + shift - 65)% 26 + 65)
+    elif char.islower():
+        ctext += chr((ord(char) + shift - 97)% 26 + 97)
+    else:
+        ctext += char
+
+print(ctext)
