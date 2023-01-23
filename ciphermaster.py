@@ -43,10 +43,7 @@ while True:
 ### Caesar Cipher ###
 import random
 
-choice = input('Please press E for encryption, or D for decryption: ')
-
-if choice.upper() == 'E':
-
+def caesar_encr():
     ptext = input('Enter your text: ')
     shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to generate a random one: ')
     if shift == 'RANDOM':
@@ -64,8 +61,7 @@ if choice.upper() == 'E':
     print(f'Your shift key is: {shift}. Keep it safe')
     print(f'Encrypted text: \n{ctext}')
 
-elif choice.upper() == 'D':
-
+def caesar_decr():
     ctext = input('Enter your text: ')
     shift = input('Enter the shift you want to use: ')
     ptext = ''
@@ -79,5 +75,9 @@ elif choice.upper() == 'D':
 
     print(f'Encrypted text: \n{ptext}')
 
-else:
-    print('Please enter either E or D')
+choice = input('Please press E for encryption, or D for decryption: ')
+
+if choice.upper() == 'E':
+    caesar_encr()
+elif choice.upper() == 'D':
+    caesar_decr()
