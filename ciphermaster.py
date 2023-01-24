@@ -4,41 +4,35 @@
 import random
 import string
 
-while True:
-    choice = input('Please enter (1) for encryption, or (2) for decryption: ')
-
-    if choice == '1':
+def ss_encr():
 # Encryption
-        alphabet = string.ascii_lowercase
-        key = ''.join(random.sample(alphabet,len(alphabet)))
-        plaintext = input('Enter the text you want encrypted: ')
+    alphabet = string.ascii_lowercase
+    key = ''.join(random.sample(alphabet,len(alphabet)))
+    plaintext = input('Enter the text you want encrypted: ')
 
-        ciphertext = ''
-        for letter in plaintext:
-            if letter.lower() in alphabet:
-                ciphertext += key[alphabet.find(letter.lower())]
-            else:
-                ciphertext += letter
+    ciphertext = ''
+    for letter in plaintext:
+        if letter.lower() in alphabet:
+            ciphertext += key[alphabet.find(letter.lower())]
+        else:
+            ciphertext += letter
 
-        print(f'Your encryption key is {key}. Please keep it safe!')
-        print(f'Your encrypted text: {ciphertext}')
-        break
-    elif choice == '2':
-
+    print(f'Your encryption key is {key}. Please keep it safe!')
+    print(f'Your encrypted text: {ciphertext}')
+        
 # Decryption
+def ss_decr():
+    dtext = input('Enter the text you want decrypted here: ')
+    dkey = input('Enter your encryption key: ')
+    alphabet = string.ascii_lowercase
+    plaintext = ''
+    for letter in dtext:
+        if letter.lower() in dkey:
+            plaintext += alphabet[dkey.find(letter.lower())]
+        else:
+            plaintext += letter
 
-        dtext = input('Enter the text you want decrypted here: ')
-        dkey = input('Enter your encryption key: ')
-        alphabet = string.ascii_lowercase
-        plaintext = ''
-        for letter in dtext:
-            if letter.lower() in dkey:
-                plaintext += alphabet[dkey.find(letter.lower())]
-            else:
-                plaintext += letter
-        break
-        print(f'Your decrypted text: {plaintext}')
-        continue
+    print(f'Your decrypted text: {plaintext}')
 
 ### Caesar Cipher ###
 import random
