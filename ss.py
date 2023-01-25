@@ -20,7 +20,7 @@ def ss_encr():
 # Decryption
 def ss_decr():
     dtext = input('Enter the text you want decrypted here: ')
-    dkey = input('Enter your encryption key: ')
+    dkey = input('Enter your key: ')
     alphabet = string.ascii_lowercase
     plaintext = ''
     for letter in dtext:
@@ -31,3 +31,9 @@ def ss_decr():
 
     print(f'Your decrypted text: {plaintext}')
 
+choice = input('Please press E for encryption, or D for decryption: ')
+
+if choice.upper() == 'E':
+    ss_encr()
+elif choice.upper() == 'D':
+    ss_decr()
