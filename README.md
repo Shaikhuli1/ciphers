@@ -8,7 +8,7 @@ Currently, the list of ciphers to include and how they work (subject to change) 
   * [Caesar](https://en.wikipedia.org/wiki/Caesar_cipher) 
   * One-Time Pad
   * Playfair
-  * Vigenere
+  * [Vigenere](https://www.geeksforgeeks.org/vigenere-cipher/)
   * Hill
   * Four-Square
 
