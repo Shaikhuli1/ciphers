@@ -6,8 +6,8 @@ Currently, the list of ciphers to include and how they work (subject to change) 
 
   * [Simple substitution](http://practicalcryptography.com/ciphers/simple-substitution-cipher/)
   * [Caesar](https://en.wikipedia.org/wiki/Caesar_cipher) 
-  * One-Time Pad
-  * Playfair
+  * [One-Time Pad](https://www.geeksforgeeks.org/implementation-of-vernam-cipher-or-one-time-pad-algorithm/)
+  * [Playfair](https://www.geeksforgeeks.org/playfair-cipher-with-examples/)
   * [Vigenere](https://www.geeksforgeeks.org/vigenere-cipher/)
   * Hill
   * Four-Square
