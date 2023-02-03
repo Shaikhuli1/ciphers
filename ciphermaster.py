@@ -84,9 +84,21 @@ elif choice.upper() == 'D':
 
 ### Vigenere Cipher ###
 
+import string
+alphabet = string.ascii_lowercase
+
+def generate_key(ptext,key):
+    keylist = list(key)
+    while len(keylist) < len(ptext):
+        for i in range(len(ptext) - len(keylist)):
+            keylist.append(keylist[i])
+    return ''.join(key)
+
 def vign_encr(): 
-    ptext = input('Enter your text: ')
-    shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to generate a random one: ')
+    pass
+
+    
+
 
 def vign_decr():
     ctext = input('Enter your text: ')
@@ -95,6 +107,9 @@ def vign_decr():
 choice = input('Please press E for encryption, or D for decryption: ')
 
 if choice.upper() == 'E':
+    ptext = input('Enter your text: ')
+    keyword = input('Enter the keyword you want to use: ')
+    key = generate_key(ptext,keyword)
     vign_encr()
 elif choice.upper() == 'D':
     vign_decr()
