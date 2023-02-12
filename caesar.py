@@ -33,9 +33,10 @@ def caesar_decr():
 
     print(f'Encrypted text: \n{ptext}')
 
-choice = input('Please press E for encryption, or D for decryption: ')
+if __name__ == '__main__':
+    choice = input('Please press E for encryption, or D for decryption: ')
 
-if choice.upper() == 'E':
-    caesar_encr()
-elif choice.upper() == 'D':
-    caesar_decr()
+    if choice.upper() == 'E':
+        caesar_encr()
+    elif choice.upper() == 'D':
+        caesar_decr()
