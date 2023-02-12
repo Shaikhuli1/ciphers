@@ -31,9 +31,10 @@ def ss_decr():
 
     print(f'Your decrypted text: {plaintext}')
 
-choice = input('Please press E for encryption, or D for decryption: ')
+if __name__ == '__main__':
+    choice = input('Please press E for encryption, or D for decryption: ')
 
-if choice.upper() == 'E':
-    ss_encr()
-elif choice.upper() == 'D':
-    ss_decr()
+    if choice.upper() == 'E':
+        ss_encr()
+    elif choice.upper() == 'D':
+        ss_decr()
