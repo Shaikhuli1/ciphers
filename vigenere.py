@@ -1,14 +1,12 @@
 # Vigenere Cipher
 import string
-alphabet = string.ascii_lowercase
-
 
 def generate_key(text,key):
     keylist = list(key)
     while len(keylist) < len(text):
         for i in range(len(text) - len(keylist)):
             keylist.append(keylist[i])
-    return ''.join(key)
+    return ''.join(keylist)
 
 def vign_encr(ptext,key): 
     ctext = ''
@@ -27,16 +25,15 @@ def vign_decr(ctext,key):
     return ptext
 
 choice = input('Please press E for encryption, or D for decryption: ')
+text = input('Enter your text: ').upper().replace(' ','')
+keyword = input('Enter the keyword you want to use: ').upper()
+
 
 if choice.upper() == 'E':
-    ptext = input('Enter your text: ')
-    keyword = input('Enter the keyword you want to use: ')
-    key = generate_key(ptext,keyword)
-    ctext = vign_encr(ptext,key)
+    key = generate_key(text,keyword)
+    ctext = vign_encr(text,key)
     print(f'Cipher text: {ctext}')
 elif choice.upper() == 'D':
-    ctext = input('Enter your text: ')
-    keyword = input('Enter the keyword you want to use: ')
-    key = generate_key(ctext,keyword)
-    ptext = vign_decr(ctext,key)
+    key = generate_key(text,keyword)
+    ptext = vign_decr(text,key)
     print(f'Decrypted text: {ptext}')
