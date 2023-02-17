@@ -1,5 +1,5 @@
 # Vigenere Cipher
-import string
+'''import string
 
 def generate_key(text,key):
     keylist = list(key)
@@ -36,4 +36,24 @@ if choice.upper() == 'E':
 elif choice.upper() == 'D':
     key = generate_key(text,keyword)
     ptext = vign_decr(text,key)
-    print(f'Decrypted text: {ptext}')
+    print(f'Decrypted text: {ptext}')'''
+
+class Key:
+    def __init__(self):
+        self.key = input('Enter the keyword you want to use: ').upper()
+        self.text = input('Enter your text: ').upper().replace(' ','')
+        self.keylist = list(self.key)
+
+    def generate_key(self):
+        while len(self.keylist) < len(self.text):
+            for i in range(len(self.text) - len(self.keylist)):
+                self.keylist.append(self.keylist[i])
+        return ''.join(self.keylist)
+
+class Cipher: 
+    def __init__(self):
+        pass
+
+class Vigenere:
+    def __init__(self):
+        pass
