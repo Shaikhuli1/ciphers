@@ -39,10 +39,10 @@ elif choice.upper() == 'D':
     print(f'Decrypted text: {ptext}')'''
 
 class Key:
-    def __init__(self):
-        self.key = input('Enter the keyword you want to use: ').upper()
-        self.text = input('Enter your text: ').upper().replace(' ','')
-        self.keylist = list(self.key)
+    def __init__(self,text):
+        self.keyword = input('Enter the keyword you want to use: ').upper()
+        self.keylist = list(self.keyword)
+        self.text = text
 
     def generate_key(self):
         while len(self.keylist) < len(self.text):
@@ -51,9 +51,19 @@ class Key:
         return ''.join(self.keylist)
 
 class Cipher: 
-    def __init__(self):
-        pass
+    def __init__(self,text):
+        self.string = ''
+        self.text = text
+        
+    def vig_encr(self):
+        for i in range(len(self.text)):
+            x = (ord(self.text[i]) + ord(self.text[i])) % 26
+            x += ord('A')
+            self.string += chr(x)
+        return self.string
 
 class Vigenere:
     def __init__(self):
         pass
+
+text = input('Enter your text: ').upper().replace(' ','')
