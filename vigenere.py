@@ -54,14 +54,22 @@ class Cipher:
     def __init__(self,text):
         self.string = ''
         self.text = text
+        self.key = Key.generate_key()
         
     def vig_encr(self):
         for i in range(len(self.text)):
-            x = (ord(self.text[i]) + ord(self.text[i])) % 26
+            x = (ord(self.text[i]) + ord(self.key[i])) % 26
             x += ord('A')
             self.string += chr(x)
         return self.string
-
+    
+    def vig_decr(self):
+        for i in range(len(self.text)):
+            x = (ord(self.text[i]) - ord(self.key[i]) + 26) % 26
+            x += ord('A')
+            self.string += chr(x)
+        return self.string
+    
 class Vigenere:
     def __init__(self):
         pass
