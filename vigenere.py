@@ -54,7 +54,7 @@ class Cipher:
     def __init__(self,text):
         self.string = ''
         self.text = text
-        self.key = Key.generate_key()
+        self.key = Key(self.text).generate_key()
         
     def vig_encr(self):
         for i in range(len(self.text)):
@@ -70,8 +70,24 @@ class Cipher:
             self.string += chr(x)
         return self.string
     
+    def __str__(self):
+        if self.vig_encr():
+            return f'Encrypted text: {self.string}'
+        elif self.vig_decr():
+            return f'Decrypted text: {self.string}'
+    
 class Vigenere:
     def __init__(self):
-        pass
+        self.text = input('Enter your text: ').upper().replace(' ','')
+        self.cipher = Cipher(self.text)
+        self.userchoice = input('Please press E for encryption, or D for decryption: ')
+    
+    def user_choice(self):
+        if self.userchoice.upper() == 'E':
+            self.cipher.vig_encr()
+        elif self.userchoice.upper() == 'D':
+            self.cipher.vig_decr()
 
-text = input('Enter your text: ').upper().replace(' ','')
+vigenere = Vigenere()
+vigenere.user_choice()
+print(str(vigenere.cipher))
