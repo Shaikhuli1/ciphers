@@ -55,12 +55,15 @@ class Cipher:
         self.string = ''
         self.text = text
         self.key = Key(self.text).generate_key()
+        self.encr_called = False
+        self.decr_called = False
         
     def vig_encr(self):
         for i in range(len(self.text)):
             x = (ord(self.text[i]) + ord(self.key[i])) % 26
             x += ord('A')
             self.string += chr(x)
+        self.encr_called = True
         return self.string
     
     def vig_decr(self):
@@ -68,12 +71,13 @@ class Cipher:
             x = (ord(self.text[i]) - ord(self.key[i]) + 26) % 26
             x += ord('A')
             self.string += chr(x)
+        self.decr_called = True
         return self.string
     
     def __str__(self):
-        if self.vig_encr():
+        if self.encr_called:
             return f'Encrypted text: {self.string}'
-        elif self.vig_decr():
+        elif self.decr_called:
             return f'Decrypted text: {self.string}'
     
 class Vigenere:
@@ -91,3 +95,4 @@ class Vigenere:
 vigenere = Vigenere()
 vigenere.user_choice()
 print(str(vigenere.cipher))
+
