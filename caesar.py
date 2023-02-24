@@ -2,13 +2,13 @@
 import random
 '''
 def caesar_encr():
-    ptext = input('Enter your text: ')
+    self.string = input('Enter your text: ')
     shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to generate a random one: ')
     if shift == 'RANDOM':
         shift = random.randint(1,25)
 
     ctext = ''
-    for char in ptext:
+    for char in self.string:
         if char.isupper():
             ctext += chr((ord(char) + shift - 65)% 26 + 65)
         elif char.islower():
@@ -22,16 +22,16 @@ def caesar_encr():
 def caesar_decr():
     ctext = input('Enter your text: ')
     shift = input('Enter the shift you want to use: ')
-    ptext = ''
+    self.string = ''
     for char in ctext:
         if char.isupper():
-            ptext += chr((ord(char) - shift - 65)% 26 + 65)
+            self.string += chr((ord(char) - shift - 65)% 26 + 65)
         elif char.islower():
-            ptext += chr((ord(char) - shift - 97)% 26 + 97)
+            self.string += chr((ord(char) - shift - 97)% 26 + 97)
         else:
-            ptext += char
+            self.string += char
 
-    print(f'Encrypted text: \n{ptext}')
+    print(f'Encrypted text: \n{self.string}')
 
 if __name__ == '__main__':
     choice = input('Please press E for encryption, or D for decryption: ')
@@ -41,43 +41,45 @@ if __name__ == '__main__':
     elif choice.upper() == 'D':
         caesar_decr()
 '''
-class Caesar:
+class Shift:
     def __init__(self):
-        pass
+        self.shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to generate a random one: ')
     
-    def caesar_encr():
-        ptext = input('Enter your text: ')
-        shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to generate a random one: ')
-        if shift == 'RANDOM':
-            shift = random.randint(1,25)
+    def rand_shift(self):
+        if self.shift == 'RANDOM':
+            self.shift = random.randint(1,25)
+        return self.shift
 
-        ctext = ''
-        for char in ptext:
+class Cipher:
+    def __init__(self):
+        self.text = input('Enter your text: ')
+        self.shift = Shift().rand_shift()
+        self.string = ''
+    
+    def caesar_encr(self):
+        for char in self.text:
             if char.isupper():
-                ctext += chr((ord(char) + shift - 65)% 26 + 65)
+                self.string += chr((ord(char) + self.shift - 65)% 26 + 65)
             elif char.islower():
-                ctext += chr((ord(char) + shift - 97)% 26 + 97)
+                self.string += chr((ord(char) + self.shift - 97)% 26 + 97)
             else:
-                ctext += char
+                self.string += char
 
-        print(f'Your shift key is: {shift}. Keep it safe')
-        print(f'Encrypted text: \n{ctext}')
+        print(f'Your shift key is: {self.shift}. Keep it safe')
+        print(f'Encrypted text: \n{self.string}')
 
-    def caesar_decr():
-        ctext = input('Enter your text: ')
-        shift = input('Enter the shift you want to use: ')
-        ptext = ''
-        for char in ctext:
+    def caesar_decr(self):
+        for char in self.text:
             if char.isupper():
-                ptext += chr((ord(char) - shift - 65)% 26 + 65)
+                self.string += chr((ord(char) - self.shift - 65)% 26 + 65)
             elif char.islower():
-                ptext += chr((ord(char) - shift - 97)% 26 + 97)
+                self.string += chr((ord(char) - self.shift - 97)% 26 + 97)
             else:
-                ptext += char
+                self.string += char
 
-        print(f'Encrypted text: \n{ptext}')
+        print(f'Encrypted text: \n{self.string}')
 
 
-class UserInput:
+class Caesar:
     def __init__(self):
         pass
