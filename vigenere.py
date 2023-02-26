@@ -1,6 +1,6 @@
 # Vigenere Cipher
-'''import string
-
+# Reference code in docstring!
+'''
 def generate_key(text,key):
     keylist = list(key)
     while len(keylist) < len(text):
@@ -36,7 +36,8 @@ if choice.upper() == 'E':
 elif choice.upper() == 'D':
     key = generate_key(text,keyword)
     ptext = vign_decr(text,key)
-    print(f'Decrypted text: {ptext}')'''
+    print(f'Decrypted text: {ptext}')
+'''
 
 class Key:
     def __init__(self,text):
@@ -95,4 +96,3 @@ class Vigenere:
 vigenere = Vigenere()
 vigenere.user_choice()
 print(str(vigenere.cipher))
-

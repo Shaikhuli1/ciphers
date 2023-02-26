@@ -44,16 +44,18 @@ if __name__ == '__main__':
 class Shift:
     def __init__(self):
         self.shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to generate a random one: ')
-    
+
     def rand_shift(self):
-        if self.shift == 'RANDOM':
+        if self.shift.isdigit():
+            return int(self.shift)
+        elif self.shift == 'RANDOM':
             self.shift = random.randint(1,25)
-        return self.shift
+            return self.shift
 
 class Cipher:
     def __init__(self):
         self.text = input('Enter your text: ')
-        self.shift = Shift.rand_shift()
+        self.shift = Shift().rand_shift()
         self.string = ''
     
     def caesar_encr(self):
@@ -65,8 +67,8 @@ class Cipher:
             else:
                 self.string += char
 
-        print(f'Your shift key is: {self.shift}. Keep it safe')
-        print(f'Encrypted text: \n{self.string}')
+        print(f'Your shift key is: {str(self.shift)}. Keep it safe')
+        print(f'Encrypted text: \n{str(self.string)}')
 
     def caesar_decr(self):
         for char in self.text:
@@ -77,14 +79,19 @@ class Cipher:
             else:
                 self.string += char
 
-        print(f'Encrypted text: \n{self.string}')
+        print(f'Encrypted text: \n{str(self.string)}')
 
 class Caesar:
     def __init__(self):
         self.choice = input('Please press E for encryption, or D for decryption: ')
         self.cipher = Cipher()
+
     def user_choice(self):
         if self.choice.upper() == 'E':
             self.cipher.caesar_encr()
         elif self.choice.upper() == 'D':
             self.cipher.caesar_decr()
+
+if __name__ == '__main__':
+    caesar = Caesar()
+    caesar.user_choice()
