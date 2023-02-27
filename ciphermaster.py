@@ -1,8 +1,8 @@
 # Master script of all the ciphers will be going here, including encryption and decryption
-
-### Simple Substitution ###
 import random
 import string
+
+### Simple Substitution ###
 
 def ss_encr():
 # Encryption
@@ -43,44 +43,60 @@ elif choice.upper() == 'D':
 
 ### Caesar Cipher ###
 
-def caesar_encr():
-    ptext = input('Enter your text: ')
-    shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to generate a random one: ')
-    if shift == 'RANDOM':
-        shift = random.randint(1,25)
+class Shift:
+    def __init__(self):
+        self.shift = input('Enter the shift you want to use. If encrypting, enter "RANDOM" if you wish to generate a random shift: ')
 
-    ctext = ''
-    for char in ptext:
-        if char.isupper():
-            ctext += chr((ord(char) + shift - 65)% 26 + 65)
-        elif char.islower():
-            ctext += chr((ord(char) + shift - 97)% 26 + 97)
-        else:
-            ctext += char
+    def rand_shift(self):
+        if self.shift.isdigit():
+            return int(self.shift)
+        elif self.shift == 'RANDOM':
+            self.shift = random.randint(1,25)
+            return self.shift
 
-    print(f'Your shift key is: {shift}. Keep it safe')
-    print(f'Encrypted text: \n{ctext}')
+class Cipher:
+    def __init__(self):
+        self.text = input('Enter your text: ')
+        self.shift = Shift().rand_shift()
+        self.string = ''
+    
+    def caesar_encr(self):
+        for char in self.text:
+            if char.isupper():
+                self.string += chr((ord(char) + self.shift - 65)% 26 + 65)
+            elif char.islower():
+                self.string += chr((ord(char) + self.shift - 97)% 26 + 97)
+            else:
+                self.string += char
 
-def caesar_decr():
-    ctext = input('Enter your text: ')
-    shift = input('Enter the shift you want to use: ')
-    ptext = ''
-    for char in ctext:
-        if char.isupper():
-            ptext += chr((ord(char) - shift - 65)% 26 + 65)
-        elif char.islower():
-            ptext += chr((ord(char) - shift - 97)% 26 + 97)
-        else:
-            ptext += char
+        print(f'Your shift key is: {str(self.shift)}. Keep it safe.')
+        print(f'\nEncrypted text: {str(self.string)}')
 
-    print(f'Encrypted text: \n{ptext}')
+    def caesar_decr(self):
+        for char in self.text:
+            if char.isupper():
+                self.string += chr((ord(char) - self.shift - 65)% 26 + 65)
+            elif char.islower():
+                self.string += chr((ord(char) - self.shift - 97)% 26 + 97)
+            else:
+                self.string += char
 
-choice = input('Please press E for encryption, or D for decryption: ')
+        print(f'Decrypted text: \n{str(self.string)}')
 
-if choice.upper() == 'E':
-    caesar_encr()
-elif choice.upper() == 'D':
-    caesar_decr()
+class Caesar:
+    def __init__(self):
+        self.choice = input('Please press E for encryption, or D for decryption: ')
+        self.cipher = Cipher()
+
+    def user_choice(self):
+        if self.choice.upper() == 'E':
+            self.cipher.caesar_encr()
+        elif self.choice.upper() == 'D':
+            self.cipher.caesar_decr()
+
+if __name__ == '__main__':
+    caesar = Caesar()
+    caesar.user_choice()
 
 ### Vigenere Cipher ###
 
