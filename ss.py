@@ -1,6 +1,6 @@
 import random
 import string
-
+'''
 def ss_encr():
 # Encryption
     alphabet = string.ascii_lowercase
@@ -38,3 +38,28 @@ if __name__ == '__main__':
         ss_encr()
     elif choice.upper() == 'D':
         ss_decr()
+'''
+class Key:
+    def __init__(self):
+        self.alphabet = string.ascii_lowercase
+
+class Cipher:
+    def __init__(self):
+        pass
+
+    def ss_encr(self):
+        pass
+    
+    def ss_decr(self):
+        pass
+
+class Simple:
+    def __init__(self):
+        self.choice = input('Please press E for encryption, or D for decryption: ')
+        self.cipher = Cipher()
+        
+    def user_choice(self):
+        if self.choice.upper() == 'E':
+            self.cipher.ss_encr()
+        elif self.choice.upper() == 'D':
+            self.cipher.ss_decr()
