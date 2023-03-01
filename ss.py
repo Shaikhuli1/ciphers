@@ -42,10 +42,14 @@ if __name__ == '__main__':
 class Key:
     def __init__(self):
         self.alphabet = string.ascii_lowercase
+        self.key = ''
+
+    def key_gen(self):
+        self.key = ''.join(random.sample(self.alphabet,len(self.alphabet)))
 
 class Cipher:
     def __init__(self):
-        pass
+        self.text = input('Enter your text: ')
 
     def ss_encr(self):
         pass
@@ -63,3 +67,7 @@ class Simple:
             self.cipher.ss_encr()
         elif self.choice.upper() == 'D':
             self.cipher.ss_decr()
+
+if __name__ == '__main__':
+    simple = Simple()
+    simple.user_choice()
