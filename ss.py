@@ -49,10 +49,20 @@ class Key:
 
 class Cipher:
     def __init__(self):
-        self.text = input('Enter your text: ')
+        self.text = input('Enter your text: ').lower()
+        self.string = ''
+        self.key = Key().key_gen
+        self.alphabet = Key().alphabet
 
     def ss_encr(self):
-        pass
+        for letter in self.text:
+            if letter in self.key:
+                self.text += self.key[self.alphabet.find(letter)]
+            else:
+                self.text += letter
+
+        print(f'Your encryption key is {str(self.key)}. Please keep it safe!')
+        print(f'Your encrypted text: {str(self.text)}')
     
     def ss_decr(self):
         pass
