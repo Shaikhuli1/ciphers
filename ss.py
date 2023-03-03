@@ -57,15 +57,19 @@ class Cipher:
     def ss_encr(self):
         for letter in self.text:
             if letter in self.key:
-                self.text += self.key[self.alphabet.find(letter)]
+                self.string += self.key[self.alphabet.find(letter)]
             else:
-                self.text += letter
+                self.string += letter
 
         print(f'Your encryption key is {str(self.key)}. Please keep it safe!')
         print(f'Your encrypted text: {str(self.text)}')
     
     def ss_decr(self):
-        pass
+        for letter in self.text:
+            if letter.lower() in self.key:
+                self.string += self.alphabet[self.key.find(letter)]
+            else:
+                self.string+= letter
 
 class Simple:
     def __init__(self):
