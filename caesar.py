@@ -43,7 +43,7 @@ if __name__ == '__main__':
 '''
 class Shift:
     def __init__(self):
-        self.shift = input('Enter the shift you want to use. Enter "RANDOM" if you wish to generate a random one: ')
+        self.shift = input('Enter the shift you want to use. If encrypting, enter "RANDOM" if you wish to generate a random shift: ')
 
     def rand_shift(self):
         if self.shift.isdigit():
@@ -67,8 +67,8 @@ class Cipher:
             else:
                 self.string += char
 
-        print(f'Your shift key is: {str(self.shift)}. Keep it safe')
-        print(f'Encrypted text: \n{str(self.string)}')
+        print(f'Your shift key is: {str(self.shift)}. Keep it safe.')
+        print(f'\nEncrypted text: {str(self.string)}')
 
     def caesar_decr(self):
         for char in self.text:
@@ -79,7 +79,7 @@ class Cipher:
             else:
                 self.string += char
 
-        print(f'Encrypted text: \n{str(self.string)}')
+        print(f'Decrypted text: \n{str(self.string)}')
 
 class Caesar:
     def __init__(self):

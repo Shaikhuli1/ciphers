@@ -42,40 +42,46 @@ if __name__ == '__main__':
 class Key:
     def __init__(self):
         self.alphabet = string.ascii_lowercase
-        self.key = ''
 
     def key_gen(self):
         self.key = ''.join(random.sample(self.alphabet,len(self.alphabet)))
-
+        return self.key
+    
 class Cipher:
-    def __init__(self):
+    def __init__(self,choice):
         self.text = input('Enter your text: ').lower()
         self.string = ''
-        self.key = Key().key_gen
         self.alphabet = Key().alphabet
+        self.choice = choice
+        if self.choice == 'E':
+            self.key = Key().key_gen()
+        elif self.choice == 'D':
+            self.key = input('Enter your key: ')
 
     def ss_encr(self):
         for letter in self.text:
-            if letter in self.key:
+            if letter in self.alphabet:
                 self.string += self.key[self.alphabet.find(letter)]
             else:
                 self.string += letter
 
         print(f'Your encryption key is {str(self.key)}. Please keep it safe!')
-        print(f'Your encrypted text: {str(self.text)}')
+        print(f'Your encrypted text: {str(self.string)}')
     
     def ss_decr(self):
         for letter in self.text:
-            if letter.lower() in self.key:
+            if letter in self.key:
                 self.string += self.alphabet[self.key.find(letter)]
             else:
                 self.string+= letter
 
+        print(f'Your decrypted text: {str(self.string)}')
+        
 class Simple:
     def __init__(self):
         self.choice = input('Please press E for encryption, or D for decryption: ')
-        self.cipher = Cipher()
-        
+        self.cipher = Cipher(self.choice)
+
     def user_choice(self):
         if self.choice.upper() == 'E':
             self.cipher.ss_encr()
