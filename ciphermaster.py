@@ -164,6 +164,7 @@ class Vigenere:
         elif self.userchoice.upper() == 'D':
             self.cipher.vig_decr()
 
-vigenere = Vigenere()
-vigenere.user_choice()
-print(str(vigenere.cipher))
+if __name__ == '__main__':
+    vigenere = Vigenere()
+    vigenere.user_choice()
+    print(str(vigenere.cipher))
