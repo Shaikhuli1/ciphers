@@ -1,17 +1,24 @@
 #from random_word import RandomWords
 import random
 import string
+alphabet = string.ascii_uppercase
 
 def get_random_string(length):
-    alphabet = string.ascii_uppercase
-
     for i in range(length):
         randstring = ''.join(random.choice(alphabet))
     return randstring
 
-
 def encryption(text,key):
-    pass
+    ciphertext = ''
+    for i,char in enumerate(text):
+        charindex = alphabet.index(char)
+        keyindex = alphabet.find(key[i])
+        cvalue = (charindex + keyindex) % 26
+
+        ciphertext += alphabet[cvalue]
+
+        print(f'Your encrypted text is {ciphertext}')
+        print(f'Your key is {key}. DO NOT SHARE THIS WITH ANYONE OTHER THAN THE RECIPIENT!')
 
 def decryption(text,key):
     pass
