@@ -21,7 +21,15 @@ def encryption(text,key):
         print(f'Your key is {key}. DO NOT SHARE THIS WITH ANYONE OTHER THAN THE RECIPIENT!')
 
 def decryption(text,key):
-    pass
+    plaintext = ''
+    for i,char in enumerate(text):
+        charindex = alphabet.index(char)
+        keyindex = alphabet.find(key[i])
+        cvalue = (charindex - keyindex) % 26
+
+        plaintext += alphabet[cvalue]
+
+        print(f'Your encrypted text is {plaintext}')
 
 if __name__ == '__main__':
     text = input('Enter your text: ').upper().replace(' ','')
