@@ -4,8 +4,9 @@ import string
 alphabet = string.ascii_uppercase
 
 def get_random_string(length):
+    randstring = ''
     for i in range(length):
-        randstring = ''.join(random.choice(alphabet))
+        randstring += random.choice(alphabet)
     return randstring
 
 def encryption(text,key):
@@ -17,8 +18,8 @@ def encryption(text,key):
 
         ciphertext += alphabet[cvalue]
 
-        print(f'Your encrypted text is {ciphertext}')
-        print(f'Your key is {key}. DO NOT SHARE THIS WITH ANYONE OTHER THAN THE RECIPIENT!')
+    print(f'Your encrypted text is {ciphertext}')
+    print(f'Your key is {key}. DO NOT SHARE THIS WITH ANYONE OTHER THAN THE RECIPIENT!')
 
 def decryption(text,key):
     plaintext = ''
@@ -29,11 +30,11 @@ def decryption(text,key):
 
         plaintext += alphabet[cvalue]
 
-        print(f'Your encrypted text is {plaintext}')
+    print(f'Your encrypted text is {plaintext}')
 
 if __name__ == '__main__':
     text = input('Enter your text: ').upper().replace(' ','')
-    key = get_random_string(len(text))
+
     #word = RandomWords()
 
     #while len(word) != len(text):
@@ -42,6 +43,8 @@ if __name__ == '__main__':
     choice = input('Please press E for encryption, or D for decryption: ')
     
     if choice.upper() == 'E':
+        key = get_random_string(len(text))
         encryption(text,key)
     elif choice.upper() == 'D':
+        key = input('Enter your key: ')
         decryption(text,key)
