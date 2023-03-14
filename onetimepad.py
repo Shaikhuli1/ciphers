@@ -3,6 +3,7 @@ import random
 import string
 alphabet = string.ascii_uppercase
 
+'''
 def get_random_string(length):
     randstring = ''
     for i in range(length):
@@ -48,3 +49,21 @@ if __name__ == '__main__':
     elif choice.upper() == 'D':
         key = input('Enter your key: ')
         decryption(text,key)
+'''
+
+class Key:
+    def __init__(self):
+        self.text = input('Enter your text: ').upper().replace(' ','')
+        self.random_key = ''
+        self.length = len(self.text)
+    def get_random_string(self):
+        for i in range(self.length):
+            self.random_key += random.choice(alphabet)
+
+class Cipher:
+    def __init__(self):
+        pass
+
+class OTP:
+    def __init__(self):
+        pass
