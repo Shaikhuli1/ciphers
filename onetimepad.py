@@ -1,7 +1,7 @@
 #from random_word import RandomWords
 import random
 import string
-alphabet = string.ascii_uppercase
+
 
 '''
 def get_random_string(length):
@@ -56,14 +56,48 @@ class Key:
         self.text = input('Enter your text: ').upper().replace(' ','')
         self.random_key = ''
         self.length = len(self.text)
+
     def get_random_string(self):
         for i in range(self.length):
             self.random_key += random.choice(alphabet)
 
 class Cipher:
-    def __init__(self):
-        pass
+    def __init__(self,text,key):
+        self.string = ''
+        self.text = text
+        self.key = key
+
+    def encryption(self):
+        for i,char in enumerate(self.text):
+            charindex = alphabet.index(char)
+            keyindex = alphabet.find(self.key[i])
+            cvalue = (charindex + keyindex) % 26
+
+            self.string += alphabet[cvalue]
+
+        print(f'Your encrypted text is {self.string}')
+        print(f'Your key is {self.key}. DO NOT SHARE THIS WITH ANYONE OTHER THAN THE RECIPIENT!')
+
+    def decryption(self):
+        for i,char in enumerate(self.text):
+            charindex = alphabet.index(char)
+            keyindex = alphabet.find(self.key[i])
+            cvalue = (charindex - keyindex) % 26
+
+            self.string += alphabet[cvalue]
+
+        print(f'Your encrypted text is {self.string}')
 
 class OTP:
-    def __init__(self):
-        pass
+    def __init__(self,choice):
+        self.text = Key().text
+        if choice.upper() == 'E':
+            self.key = Key.get_random_string()
+        elif choice.upper() == 'D':
+            self.key = input('Enter your key: ')
+        
+        self.cipher = Cipher(self.text,self.key)
+
+
+if __name__ == '__main__':
+    alphabet = string.ascii_uppercase
