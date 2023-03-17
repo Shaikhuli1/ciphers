@@ -11,6 +11,7 @@ Currently, the list of ciphers to include and how they work (subject to change) 
   * [Vigenere](https://www.geeksforgeeks.org/vigenere-cipher/)
   * [Hill](https://www.geeksforgeeks.org/hill-cipher/)
   * [Four-Square](http://practicalcryptography.com/ciphers/four-square-cipher/)
+  * [RSA Algorithm](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
 
 Both encryption and decryption methods should be with each cipher
 
