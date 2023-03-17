@@ -2,7 +2,6 @@
 import random
 import string
 
-
 '''
 def get_random_string(length):
     randstring = ''
@@ -89,11 +88,13 @@ class Cipher:
         print(f'Your encrypted text is {self.string}')
 
 class OTP:
-    def __init__(self,choice):
+    def __init__(self):
         self.text = Key().text
-        if choice.upper() == 'E':
+
+        self.choice = input('Please press E for encryption, or D for decryption: ')
+        if self.choice.upper() == 'E':
             self.key = Key.get_random_string()
-        elif choice.upper() == 'D':
+        elif self.choice.upper() == 'D':
             self.key = input('Enter your key: ')
         
         self.cipher = Cipher(self.text,self.key)
@@ -101,3 +102,4 @@ class OTP:
 
 if __name__ == '__main__':
     alphabet = string.ascii_uppercase
+    otp = OTP()
