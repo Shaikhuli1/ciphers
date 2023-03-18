@@ -74,8 +74,8 @@ class Cipher:
 
             self.string += alphabet[cvalue]
 
-        print(f'Your encrypted text is {self.string}')
-        print(f'Your key is {self.key}. DO NOT SHARE THIS WITH ANYONE OTHER THAN THE RECIPIENT!')
+        print(f'Your encrypted text is {str(self.string)}')
+        print(f'Your key is {str(self.key)}. DO NOT SHARE THIS WITH ANYONE OTHER THAN THE RECIPIENT!')
 
     def decryption(self):
         for i,char in enumerate(self.text):
@@ -85,21 +85,27 @@ class Cipher:
 
             self.string += alphabet[cvalue]
 
-        print(f'Your encrypted text is {self.string}')
+        print(f'Your encrypted text is {str(self.string)}')
 
 class OTP:
     def __init__(self):
-        self.text = Key().text
-
+        self.keygen = Key()
+        self.text = self.keygen.text
         self.choice = input('Please press E for encryption, or D for decryption: ')
         if self.choice.upper() == 'E':
-            self.key = Key.get_random_string()
+            self.key = self.keygen.get_random_string()
         elif self.choice.upper() == 'D':
             self.key = input('Enter your key: ')
         
         self.cipher = Cipher(self.text,self.key)
-
+    
+    def activecipher(self):
+        if self.choice.upper() == 'E':
+            self.cipher.encryption()
+        elif self.choice.upper() == 'D':
+            self.cipher.decryption()
 
 if __name__ == '__main__':
     alphabet = string.ascii_uppercase
     otp = OTP()
+    otp.activecipher()
