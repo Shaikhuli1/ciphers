@@ -1,4 +1,3 @@
-#from random_word import RandomWords
 import random
 import string
 
@@ -34,11 +33,6 @@ def decryption(text,key):
 
 if __name__ == '__main__':
     text = input('Enter your text: ').upper().replace(' ','')
-
-    #word = RandomWords()
-
-    #while len(word) != len(text):
-        #word.get_random_word()
     
     choice = input('Please press E for encryption, or D for decryption: ')
     
@@ -56,11 +50,12 @@ class Key:
         self.random_key = ''
         self.length = len(self.text)
 
-    def get_random_string(self):
+    def get_random_string(self):    # Creates a random string of same length as the text entered
         for i in range(self.length):
             self.random_key += random.choice(alphabet)
+        return self.random_key
 
-class Cipher:
+class Cipher:    # Applying One-Time Pad to entered text
     def __init__(self,text,key):
         self.string = ''
         self.text = text
@@ -85,19 +80,19 @@ class Cipher:
 
             self.string += alphabet[cvalue]
 
-        print(f'Your encrypted text is {str(self.string)}')
+        print(f'Your decrypted text is: {str(self.string)}')
 
-class OTP:
+class OTP:   # Controller
     def __init__(self):
-        self.keygen = Key()
-        self.text = self.keygen.text
+        self.key = Key()
+        self.text = self.key.text
         self.choice = input('Please press E for encryption, or D for decryption: ')
         if self.choice.upper() == 'E':
-            self.key = self.keygen.get_random_string()
+            self.keygen = self.key.get_random_string()
         elif self.choice.upper() == 'D':
-            self.key = input('Enter your key: ')
+            self.keygen = input('Enter your key: ')
         
-        self.cipher = Cipher(self.text,self.key)
+        self.cipher = Cipher(self.text,self.keygen)
     
     def activecipher(self):
         if self.choice.upper() == 'E':
