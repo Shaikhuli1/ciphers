@@ -8,5 +8,10 @@ def decrypt():
     pass
 
 if __name__ == "__main__":
-    encrypt()
-    decrypt()
+    text = input('Enter your text: ')
+    choice = input('Please press E for encryption, or D for decryption: ')
+
+    if choice == 'E':
+        encrypt()#
+    elif choice == 'D':
+        decrypt()
