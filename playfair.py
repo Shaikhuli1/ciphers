@@ -1,6 +1,16 @@
 import random
 import string
 
+def Diagraph(text):
+    Diagraph = []
+    group = 0
+    for i in range(2, len(text), 2):
+        Diagraph.append(text[group:i])
+ 
+        group = i
+    Diagraph.append(text[group:])
+    return Diagraph
+
 def generateKeyTable(word, list1):
     key_letters = []
     for i in word:
