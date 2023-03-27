@@ -56,6 +56,12 @@ def generateKeyTable(word, list1):
  
     return matrix
 
+def search(mat, element):
+    for i in range(5):
+        for j in range(5):
+            if(mat[i][j] == element):
+                return i, j
+            
 def encrypt():
     pass
 
