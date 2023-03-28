@@ -61,7 +61,21 @@ def search(mat, element):
         for j in range(5):
             if(mat[i][j] == element):
                 return i, j
-            
+
+def encrypt_RowRule(matr, e1r, e1c, e2r, e2c):
+    char1 = ''
+    if e1c == 4:
+        char1 = matr[e1r][0]
+    else:
+        char1 = matr[e1r][e1c+1]
+ 
+    char2 = ''
+    if e2c == 4:
+        char2 = matr[e2r][0]
+    else:
+        char2 = matr[e2r][e2c+1]
+ 
+    return char1, char2
 def encrypt():
     pass
 
