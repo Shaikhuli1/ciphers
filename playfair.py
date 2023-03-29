@@ -1,6 +1,15 @@
 import random
 import string
 
+def removeSpaces(text):
+    newText = ""
+    for i in text:
+        if i == " ":
+            continue
+        else:
+            newText = newText + i
+    return newText
+
 def Diagraph(text):
     Diagraph = []
     group = 0
