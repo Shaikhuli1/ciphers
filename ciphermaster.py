@@ -168,3 +168,66 @@ if __name__ == '__main__':
     vigenere = Vigenere()
     vigenere.user_choice()
     print(str(vigenere.cipher))
+
+### One-Time Pad ###
+
+class Key:
+    def __init__(self):
+        self.text = input('Enter your text: ').upper().replace(' ','')
+        self.random_key = ''
+        self.length = len(self.text)
+
+    def get_random_string(self):    # Creates a random string of same length as the text entered
+        for i in range(self.length):
+            self.random_key += random.choice(alphabet)
+        return self.random_key
+
+class Cipher:    # Applying One-Time Pad to entered text
+    def __init__(self,text,key):
+        self.string = ''
+        self.text = text
+        self.key = key
+
+    def encryption(self):
+        for i,char in enumerate(self.text):
+            charindex = alphabet.index(char)
+            keyindex = alphabet.find(self.key[i])
+            cvalue = (charindex + keyindex) % 26
+
+            self.string += alphabet[cvalue]
+
+        print(f'Your encrypted text is {str(self.string)}')
+        print(f'Your key is {str(self.key)}. DO NOT SHARE THIS WITH ANYONE OTHER THAN THE RECIPIENT!')
+
+    def decryption(self):
+        for i,char in enumerate(self.text):
+            charindex = alphabet.index(char)
+            keyindex = alphabet.find(self.key[i])
+            cvalue = (charindex - keyindex) % 26
+
+            self.string += alphabet[cvalue]
+
+        print(f'Your decrypted text is: {str(self.string)}')
+
+class OTP:   # Controller
+    def __init__(self):
+        self.key = Key()
+        self.text = self.key.text
+        self.choice = input('Please press E for encryption, or D for decryption: ')
+        if self.choice.upper() == 'E':
+            self.keygen = self.key.get_random_string()
+        elif self.choice.upper() == 'D':
+            self.keygen = input('Enter your key: ')
+        
+        self.cipher = Cipher(self.text,self.keygen)
+    
+    def activecipher(self):
+        if self.choice.upper() == 'E':
+            self.cipher.encryption()
+        elif self.choice.upper() == 'D':
+            self.cipher.decryption()
+
+if __name__ == '__main__':
+    alphabet = string.ascii_uppercase
+    otp = OTP()
+    otp.activecipher()
