@@ -85,8 +85,21 @@ def encrypt_RowRule(matr, e1r, e1c, e2r, e2c):
         char2 = matr[e2r][e2c+1]
  
     return char1, char2
-def encrypt():
-    pass
+
+def encrypt_ColumnRule(matr, e1r, e1c, e2r, e2c):
+    char1 = ''
+    if e1r == 4:
+        char1 = matr[0][e1c]
+    else:
+        char1 = matr[e1r+1][e1c]
+ 
+    char2 = ''
+    if e2r == 4:
+        char2 = matr[0][e2c]
+    else:
+        char2 = matr[e2r+1][e2c]
+ 
+    return char1, char2
 
 def decrypt():
     pass
