@@ -101,6 +101,15 @@ def encrypt_ColumnRule(matr, e1r, e1c, e2r, e2c):
  
     return char1, char2
 
+def encrypt_RectangleRule(matr, e1r, e1c, e2r, e2c):
+    char1 = ''
+    char1 = matr[e1r][e2c]
+ 
+    char2 = ''
+    char2 = matr[e2r][e1c]
+ 
+    return char1, char2
+
 def decrypt():
     pass
 
@@ -109,6 +118,6 @@ if __name__ == "__main__":
     choice = input('Please press E for encryption, or D for decryption: ')
 
     if choice == 'E':
-        encrypt()#
+        encrypt()
     elif choice == 'D':
         decrypt()
