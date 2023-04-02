@@ -1,15 +1,6 @@
 import random
 import string
 
-def removeSpaces(text):
-    newText = ""
-    for i in text:
-        if i == " ":
-            continue
-        else:
-            newText = newText + i
-    return newText
-
 def Diagraph(text):
     Diagraph = []
     group = 0
@@ -109,6 +100,27 @@ def encrypt_RectangleRule(matr, e1r, e1c, e2r, e2c):
     char2 = matr[e2r][e1c]
  
     return char1, char2
+
+def encryptByPlayfairCipher(Matrix, plainList):
+    CipherText = []
+    for i in range(0, len(plainList)):
+        c1 = 0
+        c2 = 0
+        ele1_x, ele1_y = search(Matrix, plainList[i][0])
+        ele2_x, ele2_y = search(Matrix, plainList[i][1])
+ 
+        if ele1_x == ele2_x:
+            c1, c2 = encrypt_RowRule(Matrix, ele1_x, ele1_y, ele2_x, ele2_y)
+            # Get 2 letter cipherText
+        elif ele1_y == ele2_y:
+            c1, c2 = encrypt_ColumnRule(Matrix, ele1_x, ele1_y, ele2_x, ele2_y)
+        else:
+            c1, c2 = encrypt_RectangleRule(
+                Matrix, ele1_x, ele1_y, ele2_x, ele2_y)
+ 
+        cipher = c1 + c2
+        CipherText.append(cipher)
+    return CipherText
 
 def decrypt():
     pass
