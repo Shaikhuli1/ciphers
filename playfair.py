@@ -1,7 +1,7 @@
 import random
 import string
 
-def Diagraph(text):
+'''def Diagraph(text):
     Diagraph = []
     group = 0
     for i in range(2, len(text), 2):
@@ -132,4 +132,38 @@ if __name__ == "__main__":
     if choice == 'E':
         encrypt()
     elif choice == 'D':
-        decrypt()
+        decrypt()'''
+
+class Text:
+    def __init__(self):
+        pass
+    
+class KeyTable:
+    def __init__(self):
+        pass
+
+class Encrypt:
+    def __init__(self):
+        pass
+
+    def row_rule(self):
+        pass
+
+    def column_rule(self):
+        pass
+
+    def rectangle_rule(self):
+        pass
+
+class Decrypt:
+    def __init__(self):
+        pass
+
+    def row_rule(self):
+        pass
+
+    def column_rule(self):
+        pass
+
+    def rectangle_rule(self):
+        pass
