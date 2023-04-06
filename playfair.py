@@ -136,7 +136,16 @@ if __name__ == "__main__":
 
 class Text:
     def __init__(self):
-        pass
+        self.text = input('Enter your text: ').upper().replace(' ','')
+        self.digraph = []
+        self.group = 0
+    
+    def Diagraph(self):
+        for i in range(2, len(self.text), 2):
+            self.digraph.append(self.text[self.group:i])
+            self.group = i
+        self.digraph.append(self.text[self.group:])
+        return self.digraph
     
 class KeyTable:
     def __init__(self):
