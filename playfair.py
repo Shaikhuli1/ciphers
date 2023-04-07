@@ -140,12 +140,32 @@ class Text:
         self.digraph = []
         self.group = 0
     
-    def Diagraph(self):
+    def diagraph(self):
         for i in range(2, len(self.text), 2):
             self.digraph.append(self.text[self.group:i])
             self.group = i
         self.digraph.append(self.text[self.group:])
         return self.digraph
+    
+    def fillerletter(self):
+        k = len(self.text)
+        if k % 2 == 0:
+            for i in range(0, k, 2):
+                if self.text[i] == self.text[i+1]:
+                    new_word = self.text[0:i+1] + str('x') + self.text[i+1:]
+                    new_word = self.fillerletter(new_word)
+                    break
+                else:
+                    new_word = self.text
+        else:
+            for i in range(0, k-1, 2):
+                if self.text[i] == self.text[i+1]:
+                    new_word = self.text[0:i+1] + str('x') + self.text[i+1:]
+                    new_word = self.fillerletter(new_word)
+                    break
+                else:
+                    new_word = self.text
+        return new_word
     
 class KeyTable:
     def __init__(self):
