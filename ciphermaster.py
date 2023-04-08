@@ -231,3 +231,67 @@ if __name__ == '__main__':
     alphabet = string.ascii_uppercase
     otp = OTP()
     otp.activecipher()
+
+### Playfair Cipher ###
+class Text:
+    def __init__(self):
+        self.text = input('Enter your text: ').upper().replace(' ','')
+        self.digraph = []
+        self.group = 0
+    
+    def diagraph(self):
+        for i in range(2, len(self.text), 2):
+            self.digraph.append(self.text[self.group:i])
+            self.group = i
+        self.digraph.append(self.text[self.group:])
+        return self.digraph
+    
+    def fillerletter(self):
+        k = len(self.text)
+        if k % 2 == 0:
+            for i in range(0, k, 2):
+                if self.text[i] == self.text[i+1]:
+                    new_word = self.text[0:i+1] + str('x') + self.text[i+1:]
+                    new_word = self.fillerletter(new_word)
+                    break
+                else:
+                    new_word = self.text
+        else:
+            for i in range(0, k-1, 2):
+                if self.text[i] == self.text[i+1]:
+                    new_word = self.text[0:i+1] + str('x') + self.text[i+1:]
+                    new_word = self.fillerletter(new_word)
+                    break
+                else:
+                    new_word = self.text
+        return new_word
+    
+class KeyTable:
+    def __init__(self):
+        pass
+
+class Encrypt:
+    def __init__(self):
+        pass
+
+    def row_rule(self):
+        pass
+
+    def column_rule(self):
+        pass
+
+    def rectangle_rule(self):
+        pass
+
+class Decrypt:
+    def __init__(self):
+        pass
+
+    def row_rule(self):
+        pass
+
+    def column_rule(self):
+        pass
+
+    def rectangle_rule(self):
+        pass
