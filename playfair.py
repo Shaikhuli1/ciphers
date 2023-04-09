@@ -41,18 +41,18 @@ def generateKeyTable(word, list1):
         if i not in key_letters:
             key_letters.append(i)
  
-    compElements = []
+    self.comp_elements = []
     for i in key_letters:
-        if i not in compElements:
-            compElements.append(i)
+        if i not in self.comp_elements:
+            self.comp_elements.append(i)
     for i in list1:
-        if i not in compElements:
-            compElements.append(i)
+        if i not in self.comp_elements:
+            self.comp_elements.append(i)
  
     matrix = []
-    while compElements != []:
-        matrix.append(compElements[:5])
-        compElements = compElements[5:]
+    while self.comp_elements != []:
+        matrix.append(self.comp_elements[:5])
+        self.comp_elements = self.comp_elements[5:]
  
     return matrix
 
@@ -169,8 +169,28 @@ class Text:
     
 class KeyTable:
     def __init__(self):
-        pass
+        self.key_letters = []
+        self.comp_elements = []
+        self.matrix = []
 
+    def generateKeyTable(self, word, list1):
+        for i in word:
+            if i not in self.key_letters:
+                self.key_letters.append(i)
+    
+        for i in self.key_letters:
+            if i not in self.comp_elements:
+                self.comp_elements.append(i)
+        for i in list1:
+            if i not in self.comp_elements:
+                self.comp_elements.append(i)
+    
+        while self.comp_elements != []:
+            self.matrix.append(self.comp_elements[:5])
+            self.comp_elements = self.comp_elements[5:]
+    
+        return self.matrix
+    
 class Encrypt:
     def __init__(self):
         pass
