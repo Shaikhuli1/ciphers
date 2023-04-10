@@ -193,10 +193,21 @@ class KeyTable:
     
 class Encrypt:
     def __init__(self):
-        pass
+        self.char1 = ''
+        self.char2 = ''
 
-    def row_rule(self):
-        pass
+    def row_rule(self,matr, e1r, e1c, e2r, e2c):
+        if e1c == 4:
+            self.char1 = matr[e1r][0]
+        else:
+            self.char1 = matr[e1r][e1c+1]
+    
+        if e2c == 4:
+            self.char2 = matr[e2r][0]
+        else:
+            self.char2 = matr[e2r][e2c+1]
+    
+        return self.char1, self.char2
 
     def column_rule(self):
         pass
