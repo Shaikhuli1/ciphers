@@ -209,8 +209,16 @@ class Encrypt:
     
         return self.char1, self.char2
 
-    def column_rule(self):
-        pass
+    def column_rule(self,matr,e1r,e1c,e2r,e2c):
+        if e1r == 4:
+            self.char1 = matr[0][e1c]
+        else:
+            self.char1 = matr[e1r+1][e1c]
+    
+        if e2r == 4:
+            self.char2 = matr[0][e2c]
+        else:
+            self.char2 = matr[e2r+1][e2c]
 
     def rectangle_rule(self):
         pass
