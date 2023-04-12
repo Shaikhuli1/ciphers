@@ -220,8 +220,12 @@ class Encrypt:
         else:
             self.char2 = matr[e2r+1][e2c]
 
-    def rectangle_rule(self):
-        pass
+    def rectangle_rule(self,matr, e1r, e1c, e2r, e2c):
+        self.char1 = matr[e1r][e2c]
+    
+        self.char2 = matr[e2r][e1c]
+    
+        return self.char1, self.char2
 
 class Decrypt:
     def __init__(self):
