@@ -191,6 +191,12 @@ class KeyTable:
     
         return self.matrix
     
+    def search(self,element):
+        for i in range(5):
+            for j in range(5):
+                if(self.matrix[i][j] == element):
+                    return i, j
+        
 class Encrypt:
     def __init__(self):
         self.char1 = ''
