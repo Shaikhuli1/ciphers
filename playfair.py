@@ -173,7 +173,7 @@ class KeyTable:
         self.comp_elements = []
         self.matrix = []
 
-    def generateKeyTable(self, word, list1):
+    def generate_table(self, word, list1):
         for i in word:
             if i not in self.key_letters:
                 self.key_letters.append(i)
@@ -268,3 +268,18 @@ class Decrypt:
         self.char2 = matr[e2r][e1c]
     
         return self.char1, self.char2
+
+class Playfair:
+    def __init__(self):
+        self.text = Text()
+        self.text.diagraph()
+        self.text.fillerletter()
+
+        self.keytable = KeyTable()
+        self.keytable.generate_table()
+
+        self.choice = input('Please press E for encryption, or D for decryption: ')
+        if self.choice.upper() == 'E':
+            self.cipher = Encrypt()
+        elif self.choice.upper() == 'D':
+            self.cipher = Decrypt()
