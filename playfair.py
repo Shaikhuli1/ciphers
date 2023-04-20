@@ -283,3 +283,12 @@ class Playfair:
             self.cipher = Encrypt()
         elif self.choice.upper() == 'D':
             self.cipher = Decrypt()
+
+if __name__ == __main__:
+    PlainTextList = Diagraph(FillerLetter(text_Plain))
+    if len(PlainTextList[-1]) != 2:
+        PlainTextList[-1] = PlainTextList[-1]+'z'
+    
+    print("Key text:", key)
+    key = toLowerCase(key)
+    Matrix = generate_table(key, list1)
