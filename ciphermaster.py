@@ -268,30 +268,126 @@ class Text:
     
 class KeyTable:
     def __init__(self):
-        pass
+        self.key_letters = []
+        self.comp_elements = []
+        self.matrix = []
 
+    def generate_table(self, word, list1):
+        for i in word:
+            if i not in self.key_letters:
+                self.key_letters.append(i)
+    
+        for i in self.key_letters:
+            if i not in self.comp_elements:
+                self.comp_elements.append(i)
+        for i in list1:
+            if i not in self.comp_elements:
+                self.comp_elements.append(i)
+    
+        while self.comp_elements != []:
+            self.matrix.append(self.comp_elements[:5])
+            self.comp_elements = self.comp_elements[5:]
+    
+        return self.matrix
+    
+    def search(self,element):
+        for i in range(5):
+            for j in range(5):
+                if(self.matrix[i][j] == element):
+                    return i, j
+        
 class Encrypt:
     def __init__(self):
-        pass
+        self.char1 = ''
+        self.char2 = ''
 
-    def row_rule(self):
-        pass
+    def row_rule(self,matr, e1r, e1c, e2r, e2c):
+        if e1c == 4:
+            self.char1 = matr[e1r][0]
+        else:
+            self.char1 = matr[e1r][e1c+1]
+    
+        if e2c == 4:
+            self.char2 = matr[e2r][0]
+        else:
+            self.char2 = matr[e2r][e2c+1]
+    
+        return self.char1, self.char2
 
-    def column_rule(self):
-        pass
+    def column_rule(self,matr,e1r,e1c,e2r,e2c):
+        if e1r == 4:
+            self.char1 = matr[0][e1c]
+        else:
+            self.char1 = matr[e1r+1][e1c]
+    
+        if e2r == 4:
+            self.char2 = matr[0][e2c]
+        else:
+            self.char2 = matr[e2r+1][e2c]
 
-    def rectangle_rule(self):
-        pass
+    def rectangle_rule(self,matr, e1r, e1c, e2r, e2c):
+        self.char1 = matr[e1r][e2c]
+    
+        self.char2 = matr[e2r][e1c]
+    
+        return self.char1, self.char2
 
 class Decrypt:
     def __init__(self):
-        pass
+        self.char1 = ''
+        self.char2 = ''
 
-    def row_rule(self):
-        pass
+    def row_rule(self,matr, e1r, e1c, e2r, e2c):
+        if e1c == 4:
+            self.char1 = matr[e1r][0]
+        else:
+            self.char1 = matr[e1r][e1c+1]
+    
+        if e2c == 4:
+            self.char2 = matr[e2r][0]
+        else:
+            self.char2 = matr[e2r][e2c+1]
+    
+        return self.char1, self.char2
 
-    def column_rule(self):
-        pass
+    def column_rule(self,matr,e1r,e1c,e2r,e2c):
+        if e1r == 4:
+            self.char1 = matr[0][e1c]
+        else:
+            self.char1 = matr[e1r+1][e1c]
+    
+        if e2r == 4:
+            self.char2 = matr[0][e2c]
+        else:
+            self.char2 = matr[e2r+1][e2c]        
 
-    def rectangle_rule(self):
-        pass
+    def rectangle_rule(self,matr, e1r, e1c, e2r, e2c):
+        self.char1 = matr[e1r][e2c]
+    
+        self.char2 = matr[e2r][e1c]
+    
+        return self.char1, self.char2
+
+class Playfair:
+    def __init__(self):
+        self.text = Text()
+        self.text.diagraph()
+        self.text.fillerletter()
+
+        self.keytable = KeyTable()
+        self.keytable.generate_table()
+
+        self.choice = input('Please press E for encryption, or D for decryption: ')
+        if self.choice.upper() == 'E':
+            self.cipher = Encrypt()
+        elif self.choice.upper() == 'D':
+            self.cipher = Decrypt()
+
+if __name__ == __main__:
+    PlainTextList = Diagraph(FillerLetter(text_Plain))
+    if len(PlainTextList[-1]) != 2:
+        PlainTextList[-1] = PlainTextList[-1]+'z'
+    
+    print("Key text:", key)
+    key = toLowerCase(key)
+    Matrix = generate_table(key, list1)
