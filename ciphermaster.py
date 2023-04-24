@@ -297,9 +297,12 @@ class KeyTable:
                     return i, j
         
 class Encrypt:
-    def __init__(self):
+    def __init__(self,matrix,plaintext):
         self.char1 = ''
         self.char2 = ''
+        self.plaintext = plaintext
+        self.ciphertext = []
+        self.matrix = matrix
 
     def row_rule(self,matr, e1r, e1c, e2r, e2c):
         if e1c == 4:
@@ -331,6 +334,25 @@ class Encrypt:
         self.char2 = matr[e2r][e1c]
     
         return self.char1, self.char2
+    
+    def encryptByPlayfairCipher(self):
+        for i in range(0, len(self.plaintext)):
+            c1 = 0
+            c2 = 0
+            ele1_x, ele1_y = KeyTable.search(self.matrix, self.plaintext[i][0])
+            ele2_x, ele2_y = KeyTable.search(self.matrix, self.plaintext[i][1])
+    
+            if ele1_x == ele2_x:
+                c1, c2 = self.row_rule(self.matrix, ele1_x, ele1_y, ele2_x, ele2_y)
+                # Get 2 letter cipherText
+            elif ele1_y == ele2_y:
+                c1, c2 = self.column_rule(self.matrix, ele1_x, ele1_y, ele2_x, ele2_y)
+            else:
+                c1, c2 = self.rectangle_rule(self.matrix, ele1_x, ele1_y, ele2_x, ele2_y)
+    
+            cipher = c1 + c2
+            self.ciphertext.append(cipher)
+        return self.ciphertext
 
 class Decrypt:
     def __init__(self):
@@ -373,9 +395,6 @@ class Playfair:
         self.text = Text()
         self.text.diagraph()
         self.text.fillerletter()
-
-        self.keytable = KeyTable()
-        self.keytable.generate_table()
 
         self.choice = input('Please press E for encryption, or D for decryption: ')
         if self.choice.upper() == 'E':
