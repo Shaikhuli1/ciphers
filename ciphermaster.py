@@ -392,9 +392,9 @@ class Decrypt:
 
 class Playfair:
     def __init__(self):
-        self.text = Text()
-        self.text.diagraph()
-        self.text.fillerletter()
+        self.textinput = Text()
+        self.textinput.diagraph()
+        self.textinput.fillerletter()
 
         self.choice = input('Please press E for encryption, or D for decryption: ')
         if self.choice.upper() == 'E':
@@ -402,11 +402,10 @@ class Playfair:
         elif self.choice.upper() == 'D':
             self.cipher = Decrypt()
 
-if __name__ == __main__:
-    PlainTextList = Diagraph(FillerLetter(text_Plain))
-    if len(PlainTextList[-1]) != 2:
-        PlainTextList[-1] = PlainTextList[-1]+'z'
+if __name__ == '__main__':
+    playfair = Playfair()
+    if len(playfair.textinput.text) != 2:
+        playfair.textinput.text[-1] = playfair.textinput.text[-1]+'z'
     
-    print("Key text:", key)
-    key = toLowerCase(key)
+    print("Key text:", key.lower())
     Matrix = generate_table(key, list1)
